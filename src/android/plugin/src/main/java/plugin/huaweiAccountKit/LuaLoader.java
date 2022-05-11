@@ -61,7 +61,7 @@ public class LuaLoader implements JavaFunction, CoronaRuntimeListener {
      * This corresponds to the event name, e.g. [Lua] event.name
      */
     private static final String EVENT_NAME = "Huawei Account Kit";
-    private static final String VERSION = "1.0.0";
+    private static final String VERSION = "1.0.1";
 
 
     private static final String signIn = "signIn";
@@ -271,6 +271,7 @@ public class LuaLoader implements JavaFunction, CoronaRuntimeListener {
 
     private JSONObject authHuaweiIdToJson(AuthHuaweiId authHuaweiId) {
         JSONObject _authHuaweiId = new JSONObject();
+        CoronaActivity activity = CoronaEnvironment.getCoronaActivity();
         try {
             _authHuaweiId.put("getAccessToken", authHuaweiId.getAccessToken());
             _authHuaweiId.put("getIdToken", authHuaweiId.getIdToken());
@@ -282,7 +283,7 @@ public class LuaLoader implements JavaFunction, CoronaRuntimeListener {
             _authHuaweiId.put("getAuthorizationCode", authHuaweiId.getAuthorizationCode());
             _authHuaweiId.put("getUnionId", authHuaweiId.getUnionId());
             _authHuaweiId.put("getOpenId", authHuaweiId.getOpenId());
-            _authHuaweiId.put("getHuaweiAccount", authHuaweiId.getHuaweiAccount());
+            _authHuaweiId.put("getHuaweiAccount", authHuaweiId.getHuaweiAccount(activity));
             _authHuaweiId.put("getAuthorizedScopes", authHuaweiId.getAuthorizedScopes());
             _authHuaweiId.put("getAgeRangeFlag", authHuaweiId.getAgeRangeFlag());
             _authHuaweiId.put("getAgeRange", authHuaweiId.getAgeRange());
